@@ -20,12 +20,12 @@ export class News extends Component {
       }
 
       async componentDidMount(){
-            let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=5ea76f16e4b34bf9aa99ff776a902b23&page=${this.state.page-1}&pageSize=9`;
+            let url=`https://newsdata.io/api/1/news?apikey=pub_32935850ae4efbf2f9cfb264cda6b3c77919&category=business`;
             this.setState({loading:true});
             let data=await fetch(url);
             let pdata=await data.json();
             console.log(pdata);
-            this.setState({articles:pdata.articles,limit:(pdata.totalResults)/9,loading:false}); 
+            this.setState({articles:pdata.results,limit:(pdata.totalResults)/9,loading:false}); 
       }
 
       handleprev=async ()=>{
